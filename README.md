@@ -24,15 +24,14 @@ git submodule update --init --recursive
 | Path | Repository | Pinned SHA |
 | ---- | ---------- | ---------- |
 | `agentic/multiagent` | `AFOliveira/multiagent` | `a21931dfb358b3be373c3be1f84386f27840afbd` |
-| `repos/binutils-gdb` | `AFOliveira/binutils-gdb` | `7c075cd6a41256069ce938c2f46a57d1557aa01c` |
-| `repos/riscv-unified-db` | `AFOliveira/riscv-unified-db` | `87301e3cf0d5d80991072b23391c9f358353151c` |
-| `repos/et-platform` | `AFOliveira/et-platform` | `80bce4f9d91284a470d22163eb14f639a17b594e` |
-| `repos/core-et` | `AFOliveira/core-et` | `1a46d2cc9882b8143dba9171b5b65dce5a832aff` |
-| `repos/zephyr` | `AFOliveira/zephyr` | `b5813ea96135f7f04f34a485122cd575dc701266` |
+| `repos/binutils-gdb` | `AFOliveira/binutils-gdb` | `42f76cd94338df497f1ef5b0ddb029873e63fdad` |
+| `repos/riscv-unified-db` | `AFOliveira/riscv-unified-db` | `879e050fbc453d099f53575be294de9602dc3f02` |
+| `repos/et-platform` | `AFOliveira/et-platform` | `36ff45f06ebf37df61fc3bea30e277ce696c3206` |
+| `repos/core-et` | `AFOliveira/core-et` | `3b95386f29b7c2fd6aa2f8b9ac0bce9e8d8a1a9f` |
+| `repos/zephyr` | `AFOliveira/zephyr` | `5ccd6f7231e8ef741ecaa803103498b1344f5554` |
 
 ## Scope
 
-The strict ISA migration branches align UDB, Binutils, `sys_emu`, core-et, and
-Zephyr for the demo flow. Current known limitations are recorded in
-`MANIFEST.md`; in particular, Zephyr remains compile-only until the patched
-Binutils/runtime follow-up is complete.
+The clean-release ISA migration branches align UDB, Binutils, `sys_emu`,
+core-et, and Zephyr for the demo flow. Current evidence and limitations are
+recorded in `MANIFEST.md`.

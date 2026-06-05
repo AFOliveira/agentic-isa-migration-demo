@@ -12,30 +12,35 @@ Created: 2026-06-05
 
 | Component | SHA | Visibility | Role |
 | --------- | --- | ---------- | ---- |
-| `AFOliveira/binutils-gdb` | `7c075cd6a41256069ce938c2f46a57d1557aa01c` | Public | Patched XAIFET opcode tables for the strict migration targets. |
-| `AFOliveira/riscv-unified-db` | `87301e3cf0d5d80991072b23391c9f358353151c` | Public | UDB encodings for the strict migration targets. |
-| `AFOliveira/et-platform` | `80bce4f9d91284a470d22163eb14f639a17b594e` | Public | `sys_emu` strict migration handlers and build aids. |
-| `AFOliveira/core-et` | `1a46d2cc9882b8143dba9171b5b65dce5a832aff` | Public | RTL/DV/Verilator gate for `packb`, `bitmixb`, and `aif.europeriscvsummit`. |
-| `AFOliveira/zephyr` | `b5813ea96135f7f04f34a485122cd575dc701266` | Public | Strict compile-only Zephyr ISA migration smoke sample and headers. |
+| `AFOliveira/binutils-gdb` | `42f76cd94338df497f1ef5b0ddb029873e63fdad` | Public | Patched XAIFET opcode tables for the clean-release migration targets. |
+| `AFOliveira/riscv-unified-db` | `879e050fbc453d099f53575be294de9602dc3f02` | Public | UDB encodings for the clean-release migration targets. |
+| `AFOliveira/et-platform` | `36ff45f06ebf37df61fc3bea30e277ce696c3206` | Public | `sys_emu` migration dispatch, OLD-encoding retirement, and runtime fixes. |
+| `AFOliveira/core-et` | `3b95386f29b7c2fd6aa2f8b9ac0bce9e8d8a1a9f` | Public | RTL/DV/Verilator gate for `packb`, `bitmixb`, and `aif.europeriscvsummit`. |
+| `AFOliveira/zephyr` | `5ccd6f7231e8ef741ecaa803103498b1344f5554` | Public | Patched-Binutils Zephyr ISA migration smoke proof and runtime notes. |
 
 ## Validation Snapshot
 
-Against the strict branch set, local `aiflow validate --allow-arch-blockers
---allow-pending` completed successfully.
+Source experiment: `multiagent/clean-release-flow-20260604` at implementation
+commit `97a746dcc8f7f8f8e7f3fb5f2cdb31fa42e98020`.
 
-The strict validation report showed:
+The clean-release evidence recorded by the server run showed:
 
-- 9 proposed entries checked.
-- 3 fully matching entries: `packb`, `bitmixb`, `aif.europeriscvsummit`.
-- 6 remaining `rtl_pending` entries: `flq2`, `fsq2`, `faddi.pi`, `fandi.pi`,
-  `fcmov.ps`, `fcmovm.ps`.
-- 2 architecture-decision entries excluded from claims: `fbci.ps`, `fbci.pi`.
+- AIFLOW validation passed for 9 proposed targets; `fbci.ps` and `fbci.pi`
+  remained excluded pending architecture decisions.
+- Binutils round-trip plus OLD-encoding retirement passed 9/9.
+- `sys_emu` strict equivalence passed 9/9.
+- core-et frontend DV, lint, repo lint, and RTL cosim evidence passed.
+- Zephyr patched `as-new` plus `objdump` mnemonic verification passed 9/9.
+- Zephyr `west build -p always -b erbium_minion
+  samples/aifoundry/isa_migration_smoke` passed.
+- Zephyr non-execution proof showed `main()` does not call the custom-instruction
+  emitters in the runtime path.
 
 ## Known Limitations
 
-- Zephyr evidence is compile-only in this pinned snapshot. It does not yet prove
-  Zephyr was built through the newly patched Binutils assembler, and it does not
-  boot/run the Zephyr ELF on `sys_emu` or full-system Verilator.
-- The core-et branch includes focused RTL/DV evidence, but also carries Verilator
-  lint suppressions across broader RTL. Treat this as bring-up/demo quality, not
-  final clean RTL signoff.
+- Zephyr full runtime remains an infrastructure gap: `sys_emu` boot hit trap
+  recursion at PC `0x0`, and no full-system Verilator Zephyr boot target was
+  present in the tree.
+- The pinned component commits are published on public
+  `multiagent/isa-migration-clean-release-20260604/isa-migration-release`
+  branches in the `AFOliveira` forks.
