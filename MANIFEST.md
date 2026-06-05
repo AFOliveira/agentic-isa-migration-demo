@@ -17,8 +17,6 @@ Created: 2026-06-05
 | `AFOliveira/et-platform` | `80bce4f9d91284a470d22163eb14f639a17b594e` | Public | `sys_emu` strict migration handlers and build aids. |
 | `AFOliveira/core-et` | `1a46d2cc9882b8143dba9171b5b65dce5a832aff` | Public | RTL/DV/Verilator gate for `packb`, `bitmixb`, and `aif.europeriscvsummit`. |
 | `AFOliveira/zephyr` | `b5813ea96135f7f04f34a485122cd575dc701266` | Public | Strict compile-only Zephyr ISA migration smoke sample and headers. |
-| `AFOliveira/et-soc1-rtl` | `529e2b42d95bb3433aa8b8e648f203a1a96de029` | Private | Existing ET SoC RTL integration branch. |
-| `AFOliveira/etsoc1-luxonis-experiments` | `91fc1dbcf1cf33ad0347bf4e0347c6ab2d4d218f` | Private | Demo/app experiments baseline. |
 
 ## Validation Snapshot
 
@@ -41,5 +39,3 @@ The strict validation report showed:
 - The core-et branch includes focused RTL/DV evidence, but also carries Verilator
   lint suppressions across broader RTL. Treat this as bring-up/demo quality, not
   final clean RTL signoff.
-- Public users cannot clone private submodules until `et-soc1-rtl` and
-  `etsoc1-luxonis-experiments` are made public or mirrored.

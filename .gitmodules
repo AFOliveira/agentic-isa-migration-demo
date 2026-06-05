@@ -16,9 +16,3 @@
 [submodule "repos/zephyr"]
 	path = repos/zephyr
 	url = https://github.com/AFOliveira/zephyr.git
-[submodule "repos/et-soc1-rtl"]
-	path = repos/et-soc1-rtl
-	url = https://github.com/AFOliveira/et-soc1-rtl.git
-[submodule "repos/etsoc1-luxonis-experiments"]
-	path = repos/etsoc1-luxonis-experiments
-	url = https://github.com/AFOliveira/etsoc1-luxonis-experiments.git
