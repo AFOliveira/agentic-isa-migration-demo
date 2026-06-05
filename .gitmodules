@@ -1,0 +1,36 @@
+[submodule "agentic/multiagent"]
+	path = agentic/multiagent
+	url = https://github.com/AFOliveira/multiagent.git
+	branch = main
+[submodule "agentic/agentws"]
+	path = agentic/agentws
+	url = https://github.com/AFOliveira/agentws.git
+	branch = claude-engine-protocol-fix
+[submodule "repos/binutils-gdb"]
+	path = repos/binutils-gdb
+	url = https://github.com/AFOliveira/binutils-gdb.git
+	branch = agentws/isa-migration-production-strict-release
+[submodule "repos/riscv-unified-db"]
+	path = repos/riscv-unified-db
+	url = https://github.com/AFOliveira/riscv-unified-db.git
+	branch = agentws/isa-migration-production-strict-release
+[submodule "repos/et-platform"]
+	path = repos/et-platform
+	url = https://github.com/AFOliveira/et-platform.git
+	branch = agentws/isa-migration-production-strict-release
+[submodule "repos/core-et"]
+	path = repos/core-et
+	url = https://github.com/AFOliveira/core-et.git
+	branch = agentws/isa-migration-production-strict-release
+[submodule "repos/zephyr"]
+	path = repos/zephyr
+	url = https://github.com/AFOliveira/zephyr.git
+	branch = agentws/isa-migration-production-strict-release
+[submodule "repos/et-soc1-rtl"]
+	path = repos/et-soc1-rtl
+	url = https://github.com/AFOliveira/et-soc1-rtl.git
+	branch = afoliveira
+[submodule "repos/etsoc1-luxonis-experiments"]
+	path = repos/etsoc1-luxonis-experiments
+	url = https://github.com/AFOliveira/etsoc1-luxonis-experiments.git
+	branch = master
