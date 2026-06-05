@@ -1,11 +1,12 @@
-# Agent Team Snapshot
+# MULTIAGENT Configuration
 
-This directory records the public-safe MULTIAGENT team configuration used for
-the clean-release ISA migration run.
+This directory is the public-safe MULTIAGENT configuration for the clean-release
+ISA migration run. It is laid out in the format consumed by `multiagent local
+...` commands.
 
 | Path | Contents |
 | ---- | -------- |
-| `isa-migration.toml` | The 16-worker team roster: Codex planner/reviewer and Cursor domain workers. |
+| `team.toml` | The 16-worker team roster: Codex planner/reviewer and Cursor domain workers. |
 | `roles/*.md` | Per-role prompt instructions loaded for each worker role. |
 | `specs/*.md` | Job-spec templates used by the planner to dispatch the ISA migration pipeline. |
 

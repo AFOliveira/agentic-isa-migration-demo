@@ -10,9 +10,9 @@ Created: 2026-06-05
 
 ## Agent Team
 
-The public demo commits the clean-release roster at `team/isa-migration.toml`,
-per-role prompts at `team/roles/*.md`, and planner job-spec templates at
-`team/specs/*.md`. It contains 16 workers:
+The public demo commits the clean-release roster at `.multiagent/team.toml`,
+per-role prompts at `.multiagent/roles/*.md`, and planner job-spec templates at
+`.multiagent/specs/*.md`. It contains 16 workers:
 
 - Codex `gpt-5.5` with `thinking_effort = "xhigh"`: `planner-1`,
   `reviewer-1`.

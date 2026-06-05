@@ -6,9 +6,9 @@ ISA migration snapshot.**
 Pinned multi-repo snapshot for a clean-release RISC-V ISA migration carried by
 the multi-agent flow.
 
-This repository is intentionally a thin wrapper. It does not copy the component
-repositories; it pins them as submodules at the exact commits produced or used by
-the agentic flow.
+This repository is a thin wrapper plus runnable MULTIAGENT configuration. It
+does not copy the component repositories; it pins them as submodules at the
+exact commits produced or used by the agentic flow.
 
 ## Clone
 
@@ -27,6 +27,7 @@ git submodule update --init --recursive
 
 | Path | Repository | Pinned SHA |
 | ---- | ---------- | ---------- |
+| `.multiagent/` | runnable MULTIAGENT team, roles, and job specs | local config |
 | `agentic/multiagent` | `AFOliveira/multiagent` | `7f1dc3c3512cb3388ee742a6fddab4135d37e37d` |
 | `repos/binutils-gdb` | `AFOliveira/binutils-gdb` | `42f76cd94338df497f1ef5b0ddb029873e63fdad` |
 | `repos/riscv-unified-db` | `AFOliveira/riscv-unified-db` | `879e050fbc453d099f53575be294de9602dc3f02` |
@@ -36,7 +37,7 @@ git submodule update --init --recursive
 
 ## Agent Team
 
-The clean-release run used the committed roster in `team/isa-migration.toml`.
+The clean-release run used the committed roster in `.multiagent/team.toml`.
 The same template is packaged in
 `agentic/multiagent/multiagent/templates/teams/isa-migration.toml`.
 
@@ -45,10 +46,25 @@ The same template is packaged in
 - Worker roles: `udb-auditor`, `encoding-analyst`, `compliance`, `toolchain`,
   `rtl`, `dv`, `simulator`, `zephyr`, `integrator`, `sysemu-run`,
   `verilator-run`, `documenter`, `implementer`, and `committer`.
-- Per-role prompt markdowns are committed under `team/roles/`; planner job-spec
-  templates are committed under `team/specs/`.
+- Per-role prompt markdowns are committed under `.multiagent/roles/`; planner
+  job-spec templates are committed under `.multiagent/specs/`.
 - The public copy is sanitized: operator-specific hostnames, user directories,
   and repository names are replaced with placeholders.
+
+## MULTIAGENT Use
+
+From a fresh clone with `multiagent` installed:
+
+```bash
+multiagent local update
+multiagent local team list
+multiagent local role list
+```
+
+The MULTIAGENT configuration is runnable outside the original operator
+environment, but the full ISA migration workload still needs an implementation
+checkout that provides the referenced harness scripts, tools, board/runtime
+setup, and operator-specific remote workload host.
 
 ## Scope
 
