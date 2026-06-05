@@ -13,8 +13,8 @@ the agentic flow.
 ## Clone
 
 ```bash
-git clone --recurse-submodules https://github.com/AFOliveira/AGENTIC-ISA-MIGRATION-DEMO.git
-cd AGENTIC-ISA-MIGRATION-DEMO
+git clone --recurse-submodules https://github.com/AFOliveira/agentic-isa-migration-demo.git
+cd agentic-isa-migration-demo
 ```
 
 If submodules are skipped during clone:
