@@ -6,7 +6,19 @@ Created: 2026-06-05
 
 | Component | SHA | Notes |
 | --------- | --- | ----- |
-| `AFOliveira/multiagent` | `a21931dfb358b3be373c3be1f84386f27840afbd` | Multi-engine worker adapters and resumable sessions. Local tests: `82 passed`. |
+| `AFOliveira/multiagent` | `454e3895ae9a0d71afbdb75bb0ed550ec8891877` | Multi-engine worker adapters, resumable sessions, `esperanto-soc6` workload placement, and the packaged ISA migration team template. Verified: team TOML parses; `tests/test_packaging.py` passed. |
+
+## Agent Team
+
+The public demo commits the clean-release roster at `team/isa-migration.toml`.
+It contains 16 workers:
+
+- Codex `gpt-5.5` with `thinking_effort = "xhigh"`: `planner-1`,
+  `reviewer-1`.
+- Cursor `composer-2.5`: `udb-auditor-1`, `encoding-analyst-1`,
+  `compliance-1`, `toolchain-1`, `rtl-1`, `dv-1`, `simulator-1`, `zephyr-1`,
+  `integrator-1`, `sysemu-run-1`, `verilator-run-1`, `documenter-1`,
+  `implementer-1`, and `committer-1`.
 
 ## ISA Migration Stack
 

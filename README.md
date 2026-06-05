@@ -27,12 +27,24 @@ git submodule update --init --recursive
 
 | Path | Repository | Pinned SHA |
 | ---- | ---------- | ---------- |
-| `agentic/multiagent` | `AFOliveira/multiagent` | `a21931dfb358b3be373c3be1f84386f27840afbd` |
+| `agentic/multiagent` | `AFOliveira/multiagent` | `454e3895ae9a0d71afbdb75bb0ed550ec8891877` |
 | `repos/binutils-gdb` | `AFOliveira/binutils-gdb` | `42f76cd94338df497f1ef5b0ddb029873e63fdad` |
 | `repos/riscv-unified-db` | `AFOliveira/riscv-unified-db` | `879e050fbc453d099f53575be294de9602dc3f02` |
 | `repos/et-platform` | `AFOliveira/et-platform` | `36ff45f06ebf37df61fc3bea30e277ce696c3206` |
 | `repos/core-et` | `AFOliveira/core-et` | `3b95386f29b7c2fd6aa2f8b9ac0bce9e8d8a1a9f` |
 | `repos/zephyr` | `AFOliveira/zephyr` | `5ccd6f7231e8ef741ecaa803103498b1344f5554` |
+
+## Agent Team
+
+The clean-release run used the committed roster in `team/isa-migration.toml`.
+The same template is packaged in
+`agentic/multiagent/multiagent/templates/teams/isa-migration.toml`.
+
+- `planner-1` and `reviewer-1`: Codex, `gpt-5.5`, `thinking_effort = "xhigh"`.
+- Domain workers: Cursor, `composer-2.5`.
+- Worker roles: `udb-auditor`, `encoding-analyst`, `compliance`, `toolchain`,
+  `rtl`, `dv`, `simulator`, `zephyr`, `integrator`, `sysemu-run`,
+  `verilator-run`, `documenter`, `implementer`, and `committer`.
 
 ## Scope
 
