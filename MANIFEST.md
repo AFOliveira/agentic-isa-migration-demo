@@ -6,12 +6,13 @@ Created: 2026-06-05
 
 | Component | SHA | Notes |
 | --------- | --- | ----- |
-| `AFOliveira/multiagent` | `454e3895ae9a0d71afbdb75bb0ed550ec8891877` | Multi-engine worker adapters, resumable sessions, `esperanto-soc6` workload placement, and the packaged ISA migration team template. Verified: team TOML parses; `tests/test_packaging.py` passed. |
+| `AFOliveira/multiagent` | `7f1dc3c3512cb3388ee742a6fddab4135d37e37d` | Multi-engine worker adapters, resumable sessions, sanitized workload-placement policy, and the packaged ISA migration team template. Verified: team TOML parses; `tests/test_packaging.py` passed. |
 
 ## Agent Team
 
-The public demo commits the clean-release roster at `team/isa-migration.toml`.
-It contains 16 workers:
+The public demo commits the clean-release roster at `team/isa-migration.toml`,
+per-role prompts at `team/roles/*.md`, and planner job-spec templates at
+`team/specs/*.md`. It contains 16 workers:
 
 - Codex `gpt-5.5` with `thinking_effort = "xhigh"`: `planner-1`,
   `reviewer-1`.
@@ -19,6 +20,10 @@ It contains 16 workers:
   `compliance-1`, `toolchain-1`, `rtl-1`, `dv-1`, `simulator-1`, `zephyr-1`,
   `integrator-1`, `sysemu-run-1`, `verilator-run-1`, `documenter-1`,
   `implementer-1`, and `committer-1`.
+
+The role/spec markdowns are sanitized from the operator environment:
+operator-specific hostnames, user directories, and repository names are
+represented with placeholders.
 
 ## ISA Migration Stack
 

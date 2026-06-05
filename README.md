@@ -27,7 +27,7 @@ git submodule update --init --recursive
 
 | Path | Repository | Pinned SHA |
 | ---- | ---------- | ---------- |
-| `agentic/multiagent` | `AFOliveira/multiagent` | `454e3895ae9a0d71afbdb75bb0ed550ec8891877` |
+| `agentic/multiagent` | `AFOliveira/multiagent` | `7f1dc3c3512cb3388ee742a6fddab4135d37e37d` |
 | `repos/binutils-gdb` | `AFOliveira/binutils-gdb` | `42f76cd94338df497f1ef5b0ddb029873e63fdad` |
 | `repos/riscv-unified-db` | `AFOliveira/riscv-unified-db` | `879e050fbc453d099f53575be294de9602dc3f02` |
 | `repos/et-platform` | `AFOliveira/et-platform` | `36ff45f06ebf37df61fc3bea30e277ce696c3206` |
@@ -45,6 +45,10 @@ The same template is packaged in
 - Worker roles: `udb-auditor`, `encoding-analyst`, `compliance`, `toolchain`,
   `rtl`, `dv`, `simulator`, `zephyr`, `integrator`, `sysemu-run`,
   `verilator-run`, `documenter`, `implementer`, and `committer`.
+- Per-role prompt markdowns are committed under `team/roles/`; planner job-spec
+  templates are committed under `team/specs/`.
+- The public copy is sanitized: operator-specific hostnames, user directories,
+  and repository names are replaced with placeholders.
 
 ## Scope
 
