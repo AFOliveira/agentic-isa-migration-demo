@@ -1,5 +1,8 @@
 # AGENTIC DEMO
 
+**From prompt to proof: one multi-agent run, five public repos, one reproducible
+ISA migration snapshot.**
+
 Pinned multi-repo snapshot for the agentic ISA migration demo.
 
 This repository is intentionally a thin wrapper. It does not copy the component
