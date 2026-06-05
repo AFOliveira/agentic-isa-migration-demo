@@ -21,17 +21,16 @@ git submodule update --init --recursive
 
 ## Contents
 
-| Path | Repository | Pinned SHA | Branch |
-| ---- | ---------- | ---------- | ------ |
-| `agentic/multiagent` | `AFOliveira/multiagent` | `a21931dfb358b3be373c3be1f84386f27840afbd` | `main` |
-| `agentic/agentws` | `AFOliveira/agentws` | `bd60dd2684326916f50746d310db93557feaea8c` | `claude-engine-protocol-fix` |
-| `repos/binutils-gdb` | `AFOliveira/binutils-gdb` | `7c075cd6a41256069ce938c2f46a57d1557aa01c` | `agentws/isa-migration-production-strict-release` |
-| `repos/riscv-unified-db` | `AFOliveira/riscv-unified-db` | `87301e3cf0d5d80991072b23391c9f358353151c` | `agentws/isa-migration-production-strict-release` |
-| `repos/et-platform` | `AFOliveira/et-platform` | `80bce4f9d91284a470d22163eb14f639a17b594e` | `agentws/isa-migration-production-strict-release` |
-| `repos/core-et` | `AFOliveira/core-et` | `1a46d2cc9882b8143dba9171b5b65dce5a832aff` | `agentws/isa-migration-production-strict-release` |
-| `repos/zephyr` | `AFOliveira/zephyr` | `b5813ea96135f7f04f34a485122cd575dc701266` | `agentws/isa-migration-production-strict-release` |
-| `repos/et-soc1-rtl` | `AFOliveira/et-soc1-rtl` | `529e2b42d95bb3433aa8b8e648f203a1a96de029` | `afoliveira` |
-| `repos/etsoc1-luxonis-experiments` | `AFOliveira/etsoc1-luxonis-experiments` | `91fc1dbcf1cf33ad0347bf4e0347c6ab2d4d218f` | `master` |
+| Path | Repository | Pinned SHA |
+| ---- | ---------- | ---------- |
+| `agentic/multiagent` | `AFOliveira/multiagent` | `a21931dfb358b3be373c3be1f84386f27840afbd` |
+| `repos/binutils-gdb` | `AFOliveira/binutils-gdb` | `7c075cd6a41256069ce938c2f46a57d1557aa01c` |
+| `repos/riscv-unified-db` | `AFOliveira/riscv-unified-db` | `87301e3cf0d5d80991072b23391c9f358353151c` |
+| `repos/et-platform` | `AFOliveira/et-platform` | `80bce4f9d91284a470d22163eb14f639a17b594e` |
+| `repos/core-et` | `AFOliveira/core-et` | `1a46d2cc9882b8143dba9171b5b65dce5a832aff` |
+| `repos/zephyr` | `AFOliveira/zephyr` | `b5813ea96135f7f04f34a485122cd575dc701266` |
+| `repos/et-soc1-rtl` | `AFOliveira/et-soc1-rtl` | `529e2b42d95bb3433aa8b8e648f203a1a96de029` |
+| `repos/etsoc1-luxonis-experiments` | `AFOliveira/etsoc1-luxonis-experiments` | `91fc1dbcf1cf33ad0347bf4e0347c6ab2d4d218f` |
 
 ## Scope
 

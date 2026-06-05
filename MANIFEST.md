@@ -7,7 +7,6 @@ Created: 2026-06-05
 | Component | SHA | Notes |
 | --------- | --- | ----- |
 | `AFOliveira/multiagent` | `a21931dfb358b3be373c3be1f84386f27840afbd` | Multi-engine worker adapters and resumable sessions. Local tests: `82 passed`. |
-| `AFOliveira/agentws` | `bd60dd2684326916f50746d310db93557feaea8c` | Headless Claude engine protocol fix branch. Local tests: `7 passed`. |
 
 ## ISA Migration Stack
 
