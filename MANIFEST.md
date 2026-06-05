@@ -1,4 +1,4 @@
-# AGENTIC DEMO Manifest
+# Agentic ISA Migration Demo Manifest
 
 Created: 2026-06-05
 

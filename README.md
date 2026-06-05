@@ -1,9 +1,10 @@
-# AGENTIC DEMO
+# Agentic ISA Migration Demo
 
 **From prompt to proof: one multi-agent run, five public repos, one reproducible
 ISA migration snapshot.**
 
-Pinned multi-repo snapshot for the agentic ISA migration demo.
+Pinned multi-repo snapshot for a clean-release RISC-V ISA migration carried by
+the multi-agent flow.
 
 This repository is intentionally a thin wrapper. It does not copy the component
 repositories; it pins them as submodules at the exact commits produced or used by
@@ -12,8 +13,8 @@ the agentic flow.
 ## Clone
 
 ```bash
-git clone --recurse-submodules https://github.com/AFOliveira/AGENTIC-DEMO.git
-cd AGENTIC-DEMO
+git clone --recurse-submodules https://github.com/AFOliveira/AGENTIC-ISA-MIGRATION-DEMO.git
+cd AGENTIC-ISA-MIGRATION-DEMO
 ```
 
 If submodules are skipped during clone:
