@@ -35,19 +35,20 @@ that as a blocker unless the spec gives an explicit recovery path.
 ## Documentation Discoveries
 
 When you discover durable technical information that is missing from the target
-project's existing documentation, create a `role=documenter` job for Documenter. Do
-this for architecture, interfaces, invariants, workflows, setup requirements,
-debugging knowledge, file/module responsibilities, generated artifacts, or other
-facts that future agents or humans would reasonably look for in docs.
+project's existing documentation, create a same-task `role=planner` notification
+requesting documentation routing. Do this for architecture, interfaces, invariants,
+workflows, setup requirements, debugging knowledge, file/module responsibilities,
+generated artifacts, or other facts that future agents or humans would reasonably
+look for in docs.
 
-Before creating the docs job, check the target project's existing documentation
+Before notifying the planner, check the target project's existing documentation
 enough to state why the information is missing, incomplete, misleading, or too
-scattered. The docs job spec MUST be an essay, not a terse note. It MUST explain
+scattered. The notification MUST be an essay, not a terse note. It MUST explain
 what you discovered, why it matters, how you verified it, what docs you checked,
 where the information may belong, and any caveats or uncertainty.
 
-Create documentation jobs as additional follow-up work. Do not replace the
-normal integration handoff unless the current job spec explicitly says to.
+Do not create `role=documenter` jobs directly. Do not replace the normal
+integration handoff unless the current job spec explicitly says to.
 
 ## Processing a Commit Job
 
@@ -59,9 +60,9 @@ normal integration handoff unless the current job spec explicitly says to.
 3. Perform only the integration requested by the spec.
 4. Run the verification required by the spec after integration.
 5. Log the integration result, identifiers produced, and verification result.
-6. Create the required follow-up job.
+6. Notify the planner for any required follow-up routing.
 7. Complete the commit job with `multiagent agent job done <job-id> --agent-id <your-agent-name> -m "<summary>"` after
-   the follow-up exists.
+   the planner notification exists when one is required.
 
 Do not invent extra publication steps. Pushes, releases, branch deletion, worktree
 cleanup, and artifact publication happen only when the spec or project docs
@@ -126,17 +127,18 @@ Create a `role=planner` notification for Planner. Include:
 
 ### Integration Failure
 
-If the integration step ran and exposed a fixable problem, create a `role=implementer`
-fix job for Coder. Include:
+If the integration step ran and exposed a fixable problem, create a same-task
+`role=planner` notification (`notify-<job-id>-integration-failure`) with:
 
 - Original job and approved review.
 - Artifact, branch, and worktree to fix.
 - Exact failure output or reproduction steps.
 - Verification expected after the fix.
-- Required review follow-up job ID.
+- Suggested owning role and review follow-up job ID.
 
-Then complete the commit job with `multiagent agent job done <job-id> --agent-id <your-agent-name> -m "<summary>"`. The
-workflow continues through the fix job.
+Do not create `role=implementer` fix jobs directly. Then complete the commit job
+with `multiagent agent job done <job-id> --agent-id <your-agent-name> -m "<summary>"`.
+The planner dispatches the fix and review loop.
 
 ### Blocked
 
@@ -153,5 +155,7 @@ project path, or contradictory instructions.
 - Only integrate work that has the approval or authority required by the spec.
 - Do not review implementation quality again except to confirm the approved
   artifact is the artifact being integrated.
-- Do not create review jobs directly after success; notify Planner.
-- Send fixable integration failures to Coder.
+- Do not create review or fix jobs directly after success or failure; notify
+  Planner.
+- Report fixable integration failures to the planner with exact evidence and a
+  suggested owning role.

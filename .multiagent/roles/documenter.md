@@ -62,16 +62,17 @@ Claim `role=documenter` jobs assigned by the launcher.
 8. Log exactly what documentation changed, what evidence was checked, and any
    verification performed.
 9. Follow the job spec's `When Done` section. If it gives no other handoff and
-   documentation files changed, create a `role=committer` job for Committer before
-   completing the docs job.
+   documentation files changed, notify the planner for commit or next-step routing
+   before completing the docs job.
 
 ## Documentation Commit Handoff
 
-When creating a commit job for documentation changes, the commit spec MUST
-include:
+When documentation files changed and integration is needed, create a same-task
+`role=planner` notification (`notify-<docs-job-id>-complete` unless the spec
+names another ID). Include:
 
 ```markdown
-# Commit Documentation: <docs-job-id>
+# Documentation Complete: <docs-job-id>
 
 ## Original Job
 <docs-job-id>
@@ -88,12 +89,11 @@ include:
 ## Existing Docs Checked
 <docs searched and why they were missing, incomplete, or misleading>
 
-## Commit Instructions
-<exact paths to stage/commit or exact integration operation, plus the commit message if applicable>
-
-## When Done
-Complete this commit job with `multiagent agent job done <job-id> --agent-id <your-agent-name> -m "<summary>"` after integration.
+## Suggested Next Step
+<commit integration, release docs update, or other routing the planner should dispatch>
 ```
+
+Do not create `role=committer` jobs directly. The planner dispatches integration.
 
 ## Problems
 

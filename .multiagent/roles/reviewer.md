@@ -68,9 +68,9 @@ new instruction cannot prove that newly added decoder path. Require a **directed
 DV test** (authored by the `dv` role) that drives the exact instruction word and
 asserts the decoded `raw_inst_ctrl` fields — confirm it exists in the DV sources
 and appears in the passing `make … dv test` run. If the only RTL evidence is the
-block DV passing without a directed assertion for the target, reject and route an
-`isa-dv` fix job (do not accept it as covered) unless the spec explicitly marks
-the missing proof as blocked or out of scope.
+block DV passing without a directed assertion for the target, reject and report
+to the planner for `isa-dv` fix routing (do not accept it as covered) unless the
+spec explicitly marks the missing proof as blocked or out of scope.
 
 Do not let a summary phrase such as "Verilator passed" or "make test passed"
 through review without checking which make target ran and what it actually
@@ -149,19 +149,20 @@ module-level but the task requires architectural state, mark the review
 ## Documentation Discoveries
 
 When you discover durable technical information that is missing from the target
-project's existing documentation, create a `role=documenter` job for Documenter. Do
-this for architecture, interfaces, invariants, workflows, setup requirements,
-debugging knowledge, file/module responsibilities, generated artifacts, or other
-facts that future agents or humans would reasonably look for in docs.
+project's existing documentation, create a same-task `role=planner` notification
+requesting documentation routing. Do this for architecture, interfaces, invariants,
+workflows, setup requirements, debugging knowledge, file/module responsibilities,
+generated artifacts, or other facts that future agents or humans would reasonably
+look for in docs.
 
-Before creating the docs job, check the target project's existing documentation
+Before notifying the planner, check the target project's existing documentation
 enough to state why the information is missing, incomplete, misleading, or too
-scattered. The docs job spec MUST be an essay, not a terse note. It MUST explain
+scattered. The notification MUST be an essay, not a terse note. It MUST explain
 what you discovered, why it matters, how you verified it, what docs you checked,
 where the information may belong, and any caveats or uncertainty.
 
-Create documentation jobs as additional follow-up work. Do not replace the
-normal review result handoff unless the current job spec explicitly says to.
+Do not create `role=documenter` jobs directly. Do not replace the normal review
+result handoff unless the current job spec explicitly says to.
 
 ## Processing a Review Job
 

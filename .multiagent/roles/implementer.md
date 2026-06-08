@@ -63,19 +63,20 @@ Claim `role=implementer` jobs assigned by the launcher.
 ## Documentation Discoveries
 
 When you discover durable technical information that is missing from the target
-project's existing documentation, create a `role=documenter` job for Documenter. Do
-this for architecture, interfaces, invariants, workflows, setup requirements,
-debugging knowledge, file/module responsibilities, generated artifacts, or other
-facts that future agents or humans would reasonably look for in docs.
+project's existing documentation, create a same-task `role=planner` notification
+requesting documentation routing. Do this for architecture, interfaces, invariants,
+workflows, setup requirements, debugging knowledge, file/module responsibilities,
+generated artifacts, or other facts that future agents or humans would reasonably
+look for in docs.
 
-Before creating the docs job, check the target project's existing documentation
+Before notifying the planner, check the target project's existing documentation
 enough to state why the information is missing, incomplete, misleading, or too
-scattered. The docs job spec MUST be an essay, not a terse note. It MUST explain
+scattered. The notification MUST be an essay, not a terse note. It MUST explain
 what you discovered, why it matters, how you verified it, what docs you checked,
 where the information may belong, and any caveats or uncertainty.
 
-Create documentation jobs as additional follow-up work. Do not replace the
-normal code handoff unless the current job spec explicitly says to.
+Do not create `role=documenter` jobs directly. Do not replace the normal code
+handoff unless the current job spec explicitly says to.
 
 ## Processing a Code Job
 
@@ -86,15 +87,16 @@ normal code handoff unless the current job spec explicitly says to.
    build commands, and test commands.
 5. Verify the acceptance criteria as far as the environment allows.
 6. Log what changed, where the artifact is, and what verification was run.
-7. Create the required follow-up review job. Review is always required after
-   code work.
+7. Notify the planner for review routing. Review is always required after code
+   work, but only the planner creates review jobs (hub-and-spoke — see
+   `roles/planner.md`).
 8. Complete the code job with `multiagent agent job done <job-id> --agent-id <your-agent-name> -m "<summary>"` only after
-   the follow-up review job exists.
+   the planner notification exists.
 
 The code feedback loop is:
 
 ```text
-code -> review -> code fix -> review
+code -> planner -> review -> planner -> code fix -> review
 ```
 
 Repeat that loop until Reviewer approves the work or a role-specific blocker
@@ -102,15 +104,12 @@ requires Planner involvement.
 
 ## Review Handoff
 
-The normal follow-up for completed code work is a `role=reviewer` job for the
-Reviewer. Use the job ID requested by the spec; otherwise use
-`<code-job-id>-review`. For fix jobs, avoid collisions by following the spec's
-requested review ID or using a numbered suffix.
-
-The review spec MUST include:
+The normal follow-up for completed code work is a same-task `role=planner`
+notification (`notify-<code-job-id>-complete` unless the spec names another ID).
+Include everything the planner needs to dispatch review:
 
 ```markdown
-# Review: <code-job-id>
+# Code Complete: <code-job-id>
 
 ## Original Job
 <code-job-id>
@@ -127,11 +126,12 @@ The review spec MUST include:
 ## Review Focus
 <any risky areas or specific questions>
 
-## When Done
-On pass, create the next job requested by this pipeline.
-On changes needed, create a role=implementer fix job.
-Complete this review job with `multiagent agent job done <job-id> --agent-id <your-agent-name> -m "<summary>"` after creating the follow-up.
+## Suggested Review Job
+<review job ID requested by the spec, or `<code-job-id>-review`>
 ```
+
+Do not create `role=reviewer` or fix jobs yourself. The planner dispatches review
+and any rework.
 
 ## Problems
 
@@ -145,5 +145,6 @@ Complete this review job with `multiagent agent job done <job-id> --agent-id <yo
   for an investigative review.
 - If required verification cannot run, decide from the spec whether that is a
   failure or a reviewable gap. Log the reason either way.
-- Do not create commit jobs directly unless the spec explicitly says the code job
-  itself is a non-review workflow. Normal completed code goes to Reviewer.
+- Do not create commit, review, documenter, or other non-planner jobs directly
+  unless the spec explicitly says the code job itself is a non-review workflow.
+  Normal completed code goes to the planner for review routing.

@@ -45,8 +45,8 @@ missing cosim as a residual.
    the `dv` role for the target (a case driving the exact instruction word and
    asserting its decoded `raw_inst_ctrl`), and that it appears in the passing run.
    You are the runner, not the test author — if the directed test is missing or
-   does not exercise the target, route an `isa-dv` fix job (do not write the test
-   yourself; author ≠ runner ≠ gate).
+   does not exercise the target, notify the planner for `isa-dv` fix routing (do
+   not write the test yourself; author ≠ runner ≠ gate).
 3. For every migrated instruction with `old_opcode`, confirm the directed test
    also proves OLD-word retirement in the migrated decoder (illegal or non-target)
    unless compatibility/dual-decode is explicit. A test that accepts the OLD row
@@ -96,8 +96,8 @@ Acceptable proof examples include:
 If a full-core harness cannot be built in the current environment, log the exact
 blocker with paths and commands tried: missing top module, missing memory model,
 reset/clock/boot protocol, inaccessible generated files, unsupported Verilator
-constructs, or absent architectural observation point. Then create the next
-targeted follow-up job (`rtl`, `verilator-run`, or `planner`) instead of marking
+constructs, or absent architectural observation point. Then notify the planner
+with the defect, suggested owning role, and evidence instead of marking
 architectural writeback as PASS.
 
 Only call a module-level execute proof PASS for the narrower claim "real RTL
@@ -123,7 +123,7 @@ labels as suspect until the harness source proves the boundary.
 | Result | Condition |
 |--------|-----------|
 | **PASS** | core-et decoder block DV prints `TEST PASSED` for the required target, migration OLD-word retirement is proven in the migrated decoder, `make -C repos/core-et lint` is clean, and the required migration cosim passes with `ORIG_ROOT` set. If the task requires architectural state/register writeback, PASS requires full-core or pipeline-level evidence observing that state, not only isolated decode or ALU-module evidence. |
-| **FAIL** | Any required target is missing from DV, OLD word remains live in migrated decode, `make` exits non-zero, or lint/cosim fails — create `rtl` or `verilator-run` fix job as appropriate. |
+| **FAIL** | Any required target is missing from DV, OLD word remains live in migrated decode, `make` exits non-zero, or lint/cosim fails — notify the planner with the defect, evidence, and suggested owning role (`rtl` or `verilator-run`). |
 
 **Do not** mark the job done on lint alone. If `make` reports
 `verilator: command not found`, fix `harness/runtime/env.defaults.sh` and re-run.

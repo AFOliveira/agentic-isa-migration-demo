@@ -49,7 +49,8 @@ test ships with the decode row and is captured by integration).
    ```
 
 4. If the spec-derived expectation ≠ the RTL decode, fix the module not the test:
-   create an `rtl` fix job (or notify `planner`). Never weaken assertions.
+   notify the planner with the defect and suggest `rtl` fix routing. Never weaken
+   assertions.
 
 ## Acceptance (all required)
 

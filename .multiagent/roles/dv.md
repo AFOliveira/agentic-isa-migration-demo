@@ -84,8 +84,8 @@ Author tests in the core-et RTL worktree named by the RTL job/manifest (e.g.
    ```
 
 4. If your spec-derived expectation does **not** match the RTL decode, **do not
-   weaken the test to pass**. Fix the module, not the test: create an `rtl` fix
-   job (or notify `planner` if the spec/encoding itself is wrong) and route it.
+   weaken the test to pass**. Fix the module, not the test: notify the planner
+   with the defect and suggest `rtl` fix routing.
 5. Notify the planner (see Handoff). Do **not** create the simulator job — the
    planner dispatches it.
 
